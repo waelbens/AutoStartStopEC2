@@ -1,7 +1,7 @@
 # Lambda function which stop Jenkins instance
 
 resource "aws_lambda_function" "StopJenkinsInstance" {
-  filename         = "../functions/StopJenkinsInstance.zip"
+  filename         = "functions/StopJenkinsInstance.zip"
   function_name    = "StopJenkinsInstance"
   role             = "${aws_iam_role.StopJenkinsInstance.arn}"
   handler          = "StopJenkinsInstance.handler"
@@ -54,7 +54,7 @@ data "aws_iam_policy_document" "StopJenkinsInstance-policy" {
 # Lambda function which start Jenkins instance
 
 resource "aws_lambda_function" "StartJenkinsInstance" {
-  filename         = "../functions/StartJenkinsInstance.zip"
+  filename         = "functions/StartJenkinsInstance.zip"
   function_name    = "StartJenkinsInstance"
   role             = "${aws_iam_role.StartJenkinsInstance.arn}"
   handler          = "StartJenkinsInstance.handler"
