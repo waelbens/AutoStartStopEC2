@@ -1,4 +1,4 @@
-# lambda function which stop Jenkins instance
+# Lambda function which stop Jenkins instance
 
 resource "aws_lambda_function" "StopJenkinsInstance" {
   filename         = "../functions/StopJenkinsInstance.zip"
@@ -7,7 +7,7 @@ resource "aws_lambda_function" "StopJenkinsInstance" {
   handler          = "StopJenkinsInstance.handler"
   timeout          = "5"
   runtime          = "nodejs6.10"
-  source_code_hash = "${base64sha256(file("../functions/StopJenkinsInstance.zip"))}"
+  source_code_hash = "${base64sha256(file("functions/StopJenkinsInstance.zip"))}"
 }
 
 resource "aws_iam_role" "StopJenkinsInstance" {
@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "StopJenkinsInstance-policy" {
 }
 
 
-# lambda function which start Jenkins instance
+# Lambda function which start Jenkins instance
 
 resource "aws_lambda_function" "StartJenkinsInstance" {
   filename         = "../functions/StartJenkinsInstance.zip"
@@ -60,7 +60,7 @@ resource "aws_lambda_function" "StartJenkinsInstance" {
   handler          = "StartJenkinsInstance.handler"
   timeout          = "5"
   runtime          = "nodejs6.10"
-  source_code_hash = "${base64sha256(file("../functions/StartJenkinsInstance.zip"))}"
+  source_code_hash = "${base64sha256(file("functions/StartJenkinsInstance.zip"))}"
 }
 
 resource "aws_iam_role" "StartJenkinsInstance" {
