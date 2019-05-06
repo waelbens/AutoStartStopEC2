@@ -1,4 +1,4 @@
-# Lambda function which stop Jenkins instance
+# Lambda function which stop instance
 
 resource "aws_lambda_function" "StopJenkinsInstance" {
   filename         = "functions/StopJenkinsInstance.zip"
@@ -25,13 +25,6 @@ data "aws_iam_policy_document" "StopJenkinsInstance" {
   }
 }
 
-
-resource "aws_iam_role_policy" "StopJenkinsInstance" {
-  name   = "StopJenkinsInstance-${var.archi}"
-  role   = "${aws_iam_role.StopJenkinsInstance.id}"
-  policy = "${data.aws_iam_policy_document.StopJenkinsInstance.json}"
-}
-
 resource "aws_iam_role_policy" "StopJenkinsInstance-policy" {
   name   = "StopJenkinsInstance-policy-${var.archi}"
   role   = "${aws_iam_role.StopJenkinsInstance.id}"
@@ -51,7 +44,7 @@ data "aws_iam_policy_document" "StopJenkinsInstance-policy" {
 }
 
 
-# Lambda function which start Jenkins instance
+# Lambda function which start instance
 
 resource "aws_lambda_function" "StartJenkinsInstance" {
   filename         = "functions/StartJenkinsInstance.zip"
@@ -76,13 +69,6 @@ data "aws_iam_policy_document" "StartJenkinsInstance" {
       identifiers = ["lambda.amazonaws.com", "ec2.amazonaws.com"]
     }
   }
-}
-
-
-resource "aws_iam_role_policy" "StartJenkinsInstance" {
-  name   = "StartJenkinsInstance-${var.archi}"
-  role   = "${aws_iam_role.StartJenkinsInstance.id}"
-  policy = "${data.aws_iam_policy_document.StartJenkinsInstance.json}"
 }
 
 resource "aws_iam_role_policy" "StartJenkinsInstance-policy" {
